@@ -1,0 +1,77 @@
+{
+  "pyr14_fsi_128ch": {
+    "system": "Pyr14-FSI",
+    "channels": 128,
+    "test_frames": 15,
+    "learning_curve": {
+      "15": {
+        "lmax0": 246.0,
+        "lmax2": 220.2,
+        "gap": 25.8
+      },
+      "30": {
+        "lmax0": 172.9,
+        "lmax2": 169.6,
+        "gap": 3.3
+      },
+      "45": {
+        "lmax0": 160.6,
+        "lmax2": 154.5,
+        "gap": 6.1
+      }
+    }
+  },
+  "pyr14_fsi_32ch": {
+    "system": "Pyr14-FSI",
+    "channels": 32,
+    "test_frames": 15,
+    "learning_curve": {
+      "15": {
+        "lmax0": 271.3,
+        "lmax2": 204.8,
+        "gap": 66.5
+      },
+      "45": {
+        "lmax0": 217.4,
+        "lmax2": 152.4,
+        "gap": 65.0
+      }
+    }
+  },
+  "emim_bf4_128ch": {
+    "system": "EMIM-BF4",
+    "channels": 128,
+    "test_frames": 15,
+    "learning_curve": {
+      "15": {
+        "lmax0": 100.1,
+        "lmax2": 108.4,
+        "gap": -8.3
+      },
+      "30": {
+        "lmax0": 53.4,
+        "lmax2": 59.8,
+        "gap": -6.4
+      },
+      "45": {
+        "lmax0": 78.0,
+        "lmax2": 50.5,
+        "gap": 27.5,
+        "note": "lmax0 seed\u6ce2\u52a8 72-102"
+      }
+    }
+  },
+  "eight_il_60cfg_32ch": {
+    "test": "60 configs full",
+    "gaps": {
+      "BMIM-PF6": 107.9,
+      "EMIM-PF6": 45.4,
+      "Pyr14-FSI": 43.1,
+      "Pyr14-NTf2": 23.3,
+      "BMIM-NTf2": 11.4,
+      "BMIM-BF4": 3.5,
+      "EMIM-BF4": -8.1,
+      "EMIM-NTf2": -11.5
+    }
+  }
+}
