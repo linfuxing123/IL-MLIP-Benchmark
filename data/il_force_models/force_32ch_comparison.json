@@ -1,0 +1,138 @@
+{
+  "results": [
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l0",
+      "seed": "7",
+      "channels": 32,
+      "e_rmse_mev": 92.8,
+      "f_rmse_mevA": 7577.1,
+      "n_test": 15
+    },
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l0",
+      "seed": "42",
+      "channels": 32,
+      "e_rmse_mev": 93.7,
+      "f_rmse_mevA": 7651.7,
+      "n_test": 15
+    },
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l0",
+      "seed": "123",
+      "channels": 32,
+      "e_rmse_mev": 101.7,
+      "f_rmse_mevA": 7031.0,
+      "n_test": 15
+    },
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l2",
+      "seed": "7",
+      "channels": 32,
+      "e_rmse_mev": 347.3,
+      "f_rmse_mevA": 5569.8,
+      "n_test": 15
+    },
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l2",
+      "seed": "42",
+      "channels": 32,
+      "e_rmse_mev": 391.3,
+      "f_rmse_mevA": 3297.7,
+      "n_test": 15
+    },
+    {
+      "il": "EMIM-BF4",
+      "lmax": "l2",
+      "seed": "123",
+      "channels": 32,
+      "e_rmse_mev": 401.0,
+      "f_rmse_mevA": 3351.7,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l0",
+      "seed": "7",
+      "channels": 32,
+      "e_rmse_mev": 81.1,
+      "f_rmse_mevA": 3520.2,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l0",
+      "seed": "42",
+      "channels": 32,
+      "e_rmse_mev": 122.6,
+      "f_rmse_mevA": 4332.4,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l0",
+      "seed": "123",
+      "channels": 32,
+      "e_rmse_mev": 162.3,
+      "f_rmse_mevA": 4157.8,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l2",
+      "seed": "7",
+      "channels": 32,
+      "e_rmse_mev": 133.9,
+      "f_rmse_mevA": 4955.8,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l2",
+      "seed": "42",
+      "channels": 32,
+      "e_rmse_mev": 122.1,
+      "f_rmse_mevA": 4428.4,
+      "n_test": 15
+    },
+    {
+      "il": "Pyr14-FSI",
+      "lmax": "l2",
+      "seed": "123",
+      "channels": 32,
+      "e_rmse_mev": 102.1,
+      "f_rmse_mevA": 3537.3,
+      "n_test": 15
+    }
+  ],
+  "summary": {
+    "EMIM-BF4": {
+      "l0_e_mean": 96.1,
+      "l0_e_std": 4.0,
+      "l0_f_mean": 7419.9,
+      "l0_f_std": 276.7,
+      "l2_e_mean": 379.9,
+      "l2_e_std": 23.4,
+      "l2_f_mean": 4073.1,
+      "l2_f_std": 1058.6,
+      "gap_e": -283.8,
+      "gap_f": 3346.9
+    },
+    "Pyr14-FSI": {
+      "l0_e_mean": 122.0,
+      "l0_e_std": 33.2,
+      "l0_f_mean": 4003.5,
+      "l0_f_std": 349.1,
+      "l2_e_mean": 119.4,
+      "l2_e_std": 13.1,
+      "l2_f_mean": 4307.2,
+      "l2_f_std": 585.4,
+      "gap_e": 2.6,
+      "gap_f": -303.7
+    }
+  }
+}
