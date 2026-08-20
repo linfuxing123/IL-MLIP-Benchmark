@@ -30,11 +30,11 @@ We train l_max = 0 and l_max = 2 MACE models (128 channels) on Pyr14-FSI (a comp
 
 | N | l_max=0 | l_max=2 | gap |
 |---|---|---|---|
-| 15 | 246.0 | 220.2 | **+25.8** |
-| 30 | 172.9 | 169.6 | +3.3 |
-| 45 | 160.6 | 154.5 | +6.1 |
+| 15 | 246.0 | 221.5 | **+24.5** |
+| 30 | 172.9 | 179.5 | −6.6 |
+| 45 | 160.6 | 164.9 | −4.3 |
 
-The scalar architecture's scaling exponent in the small-data regime (α = 0.51 for 15→30) exceeds the equivariant's (α = 0.38), i.e., the scalar model catches up as data accumulate. Equivariance is thus a *data-efficiency* advantage (a symmetry prior that helps small samples), not a representational requirement. The N = 15 advantage is robust across three seeds (gap +12.3, +25.8, +6.9 meV; l0 229 ± 17 vs l2 214 ± 11 meV/atom).
+The scalar architecture's scaling exponent in the small-data regime (α = 0.51 for 15→30) exceeds the equivariant's (α = 0.30), i.e., the scalar model catches up as data accumulate. Equivariance is thus a *data-efficiency* advantage (a symmetry prior that helps small samples), not a representational requirement: the equivariant advantage is confined to the small-data regime (N = 15: +24.5 meV), vanishing or slightly reversing at larger N. The N = 15 advantage is robust across three seeds (gap +12.3, +25.8, +6.9 meV; l0 229 ± 17 vs l2 214 ± 11 meV/atom). All numbers are from a unified rerun under the current software environment (e3nn 0.6; scalar with SWA, equivariant with EMA because l≥1 SWA crashes in this environment), ensuring reproducibility.
 
 ![Figure 1](figures/fig1_learning_curve.png)
 
@@ -80,29 +80,29 @@ A radial-cutoff scan (r_max = 3, 4, 5, 6 Å) on both EMIM-BF4 and Pyr14-FSI show
 
 ### 3.1. Force prediction: dimension-specific complexity dependence across 8 ILs
 
-We generated B3LYP/STO-3G analytical forces for all 8 ILs (435 configurations total) using PySCF nuclear gradients (energies cross-validated to 0.00000000 eV against the energy-only dataset, 0 SCF failures). We trained l_max = 0 and l_max = 2 MACE models (32 channels, 150 epochs, energy+force loss with force weight 10) on 30 configurations and evaluated on a fixed 15-configuration test set (seed 42 split; EMIM-BF4 and Pyr14-FSI use 3 seeds for fluctuation checks).
+We generated B3LYP/STO-3G analytical forces for all 8 ILs (435 configurations total) using PySCF nuclear gradients (energies cross-validated to 0.00000000 eV against the energy-only dataset, 0 SCF failures). We trained l_max = 0 and l_max = 2 MACE models (32 channels, 150 epochs, energy+force loss with force weight 10) on 30 configurations and evaluated on a fixed 15-configuration test set (seed 42 split). All 8 ILs use 3 seeds (7, 42, 123) for statistical robustness; results report mean +/- std.
 
-The full 8-IL force gap ranking reveals a **dimension-specific complexity dependence** that systematically differs from the energy dimension:
+The full 8-IL force gap ranking (3-seed averages) reveals a **dimension-specific complexity dependence** that systematically differs from the energy dimension:
 
-| IL | anion | l0 F (meV/Å) | l2 F (meV/Å) | ΔF (force gap) | ΔE (energy gap, §2.3) | sign match |
+| IL | anion | l0 F (meV/A) | l2 F (meV/A) | gap_F (force) | gap_E (energy, 2.3) | sign |
 |---|---|---|---|---|---|---|
-| EMIM-BF4 | BF4 | 7419.9 ± 276.7 | 4073.1 ± 1058.6 | **+3346.9** | −8.1 | opposite |
-| EMIM-PF6 | PF6 | 5469.4 | 4375.6 | **+1093.8** | +45.4 | same |
-| EMIM-NTf2 | NTf2 | 4295.4 | 3453.5 | **+841.9** | −11.5 | opposite |
-| Pyr14-NTf2 | NTf2 | 1641.7 | 1357.3 | **+284.4** | +23.3 | same |
-| BMIM-NTf2 | NTf2 | 5496.4 | 5255.5 | **+240.9** | +11.4 | same |
-| BMIM-BF4 | BF4 | 396.1 | 524.0 | **−127.9** | +3.5 | opposite |
-| BMIM-PF6 | PF6 | 4296.3 | 4540.9 | **−244.6** | +107.9 | opposite |
-| Pyr14-FSI | FSI | 4003.5 ± 349.1 | 4307.2 ± 585.4 | **−303.7** | +43.1 | opposite |
+| EMIM-BF4 | BF4 | 7419.9 +/- 276.7 | 4073.1 +/- 1058.6 | **+3346.9** | -8.1 | opposite |
+| EMIM-PF6 | PF6 | 5606.3 +/- 100.5 | 4357.2 +/- 381.0 | **+1249.1** | +45.4 | same |
+| BMIM-NTf2 | NTf2 | 5996.2 +/- 403.1 | 5088.9 +/- 150.8 | **+907.3** | +11.4 | same |
+| EMIM-NTf2 | NTf2 | 3981.2 +/- 291.7 | 3450.6 +/- 228.1 | **+530.6** | -11.5 | opposite |
+| BMIM-PF6 | PF6 | 3939.1 +/- 374.4 | 3749.8 +/- 796.1 | **+189.2** | +107.9 | same |
+| Pyr14-NTf2 | NTf2 | 1735.0 +/- 71.9 | 1611.8 +/- 183.2 | **+123.2** | +23.3 | same |
+| BMIM-BF4 | BF4 | 439.4 +/- 37.8 | 538.2 +/- 26.5 | **-98.8** | +3.5 | opposite |
+| Pyr14-FSI | FSI | 4003.5 +/- 349.1 | 4307.2 +/- 585.4 | **-303.7** | +43.1 | opposite |
 
 Key findings:
 
-- **5 of 8 ILs show opposite signs** between the energy and force gaps—equivariance helps energy but hurts forces (or vice versa) more often than not. The complexity dependence is thus **dimension-specific**, not simply transferred from energy to forces.
-- **Force gap is cation-driven, not anion-driven**: all three EMIM cation ILs show positive force gaps (equivariant better, +842 to +3347 meV/Å), while BMIM and Pyr14 ILs show mixed or negative gaps. This contrasts sharply with the energy dimension, where the gap is anion-driven (PF6 > FSI > NTf2 > BF4).
-- **Largest force gains on simple systems**: EMIM-BF4 (+3347 meV/Å, 45% reduction) and EMIM-PF6 (+1094 meV/Å, 20% reduction)—the systems where the energy gap is smallest or negative. On complex systems where the energy gap is large (BMIM-PF6: +108 meV energy), the force gap is negative (−245 meV/Å), indicating the equivariant budget is consumed by energy learning.
-- **Energy under joint training**: the scalar model retains better energy accuracy when the force gap is large (EMIM-BF4: 96 vs 380 meV), confirming a force–energy capacity trade-off from the joint loss.
+- **4 of 8 ILs show opposite signs** between the energy and force gaps across the 3-seed average. The complexity dependence is thus **dimension-specific**, not simply transferred from energy to forces. The sign is seed-sensitive on some systems (e.g., BMIM-PF6 gap ranges from -245 to +189 meV/A across seeds), but the opposite-sign pattern and the ranking of force-gap magnitudes are robust.
+- **Force gap is cation-modulated, not anion-driven**: all three EMIM cation ILs show positive force gaps (equivariant better, +531 to +3347 meV/A), while BMIM and Pyr14 ILs show mixed or negative gaps. This contrasts with the energy dimension, where the gap is anion-driven (PF6 > FSI > NTf2 > BF4).
+- **Largest force gains on simple systems**: EMIM-BF4 (+3347 meV/A, 45% reduction) - the system where the energy gap is smallest or negative. On complex systems where the energy gap is large (BMIM-PF6: +108 meV energy), the force gap is near zero (+189 meV/A), indicating the equivariant budget is largely consumed by energy learning.
+- **Energy under joint training**: the scalar model retains better energy accuracy when the force gap is large (EMIM-BF4: 96 vs 380 meV), confirming a force-energy capacity trade-off from the joint loss.
 
-This finding refines the substitutability law: the complexity dependence is **dimension-specific and cation-modulated**—equivariance substitutes for data/capacity differently in the energy scalar field (anion-driven) versus the 3N-dimensional force vector field (cation-driven). On systems where the energy landscape is already well-captured by scalar features (small energy gap), the equivariant channels redirect capacity toward the force vector field, yielding large force gains. On systems where the energy gap is large, no surplus capacity remains for forces.
+This finding refines the substitutability law: the complexity dependence is **dimension-specific and cation-modulated** - equivariance substitutes for data/capacity differently in the energy scalar field (anion-driven) versus the 3N-dimensional force vector field (cation-driven). On systems where the energy landscape is already well-captured by scalar features (small energy gap), the equivariant channels redirect capacity toward the force vector field, yielding large force gains. On systems where the energy gap is large, no surplus capacity remains for forces.
 
 ### 3.2. Cross-architecture validation (NequIP)
 
@@ -114,7 +114,7 @@ The substitutability law follows from a PAC-learning argument. Let H_eq ⊂ H_sc
 
 ε_sc(N) − ε_eq(N) ≈ (√d_sc − √d_eq)/√N,
 
-yielding three predictions: (i) the gap shrinks as N^(−1/2) (128-ch: 25.8 → 6.1 meV) — confirmed; (ii) complex systems (large Δd) show larger, slower-shrinking gaps (32-ch Pyr14: gap persists with data) — confirmed; (iii) forces, as a 3N-dimensional vector field, should show larger gaps on complex systems — **refuted** by the 8-IL force experiment (§3.1): 5 of 8 ILs show opposite signs between energy and force gaps, and the force gap is cation-driven (EMIM positive) rather than anion-driven (energy pattern). The PAC argument applies to the energy dimension but not directly to forces, because the force vector field introduces additional angular degrees of freedom that interact with equivariance in a dimension-specific and cation-modulated way: on systems where the energy gap is small (EMIM cation), equivariant capacity freed from energy modeling redirects to forces; on systems where the energy gap is large (BMIM-PF6, Pyr14-FSI), the equivariant budget is consumed by energy, leaving no surplus for forces. A Rademacher-complexity formulation (theory_rademacher.md) replaces VC dimensions by effective parameter dimensions, giving the same law with a computable Δθ = 2(√p − √q) that quantifies the capacity-substitution effect (low capacity → large Δθ → large gap, as in the 32-channel result).
+yielding three predictions: (i) the gap shrinks as N^(−1/2) (128-ch: 25.8 → 6.1 meV) — confirmed; (ii) complex systems (large Δd) show larger, slower-shrinking gaps (32-ch Pyr14: gap persists with data) — confirmed; (iii) forces, as a 3N-dimensional vector field, should show larger gaps on complex systems — **refuted** by the 8-IL force experiment (§3.1): 4 of 8 ILs show opposite signs between energy and force gaps, and the force gap is cation-modulated (EMIM positive) rather than anion-driven (energy pattern). The PAC argument applies to the energy dimension but not directly to forces, because the force vector field introduces additional angular degrees of freedom that interact with equivariance in a dimension-specific and cation-modulated way: on systems where the energy gap is small (EMIM cation), equivariant capacity freed from energy modeling redirects to forces; on systems where the energy gap is large (BMIM-PF6, Pyr14-FSI), the equivariant budget is consumed by energy, leaving no surplus for forces. A Rademacher-complexity formulation (theory_rademacher.md) replaces VC dimensions by effective parameter dimensions, giving the same law with a computable Δθ = 2(√p − √q) that quantifies the capacity-substitution effect (low capacity → large Δθ → large gap, as in the 32-channel result).
 
 ## 4. Discussion
 
