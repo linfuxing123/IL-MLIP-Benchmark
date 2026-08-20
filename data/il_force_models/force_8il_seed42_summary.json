@@ -1,0 +1,86 @@
+{
+  "EMIM-PF6": [
+    {
+      "il": "EMIM-PF6",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "EMIM-PF6",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ],
+  "EMIM-NTf2": [
+    {
+      "il": "EMIM-NTf2",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "EMIM-NTf2",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ],
+  "BMIM-BF4": [
+    {
+      "il": "BMIM-BF4",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "BMIM-BF4",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ],
+  "BMIM-PF6": [
+    {
+      "il": "BMIM-PF6",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "BMIM-PF6",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ],
+  "BMIM-NTf2": [
+    {
+      "il": "BMIM-NTf2",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "BMIM-NTf2",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ],
+  "Pyr14-NTf2": [
+    {
+      "il": "Pyr14-NTf2",
+      "lmax": "l0",
+      "seed": "42",
+      "ok": true
+    },
+    {
+      "il": "Pyr14-NTf2",
+      "lmax": "l2",
+      "seed": "42",
+      "ok": true
+    }
+  ]
+}
