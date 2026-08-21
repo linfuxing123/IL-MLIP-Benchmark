@@ -52,8 +52,9 @@
 
 ### 3.8 Bulk 2-ion-pair proof of concept (C)
 - WSL-PySCF B3LYP/STO-3G energies+forces for 2-ion-pair EMIM-BF4 (48 atoms); 30 frames generated (≈3–4 min/frame)
-- MACE l0/l2 trained: force RMSE 342 (7 frames) → 269 meV/Å (30 frames) → (v4: 41 frames, in progress) — data-driven improvement path confirmed
-- Bulk MD not yet feasible at 30 frames (NVT temperature blow-up — needs ~100+ frames); honest limitation
+- MACE l0/l2 trained: force RMSE 342 (7 frames) → 269 (30) → 133 (l0, 41) / 91 meV/Å (l2, 41) — data-driven improvement path confirmed
+- **Equivariance helps in bulk too**: l2 beats l0 by 32% at 41 frames (91 vs 133 meV/Å) — consistent with isolated-ion-pair finding
+- Bulk MD not yet feasible at 41 frames (NVT temperature blow-up — needs ~100–200 frames; force RMSE <10 meV/Å); honest limitation
 - Bulk (multi-ion-pair) data generation → training path established; 41-frame merged dataset (outlier-filtered)
 
 ### 3.9 Bulk data quality (W)
