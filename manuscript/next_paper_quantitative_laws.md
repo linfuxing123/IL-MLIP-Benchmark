@@ -59,6 +59,15 @@
 ## 4. Discussion
 - Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
 - Practical guidance: chemical accuracy (43 meV/atom) on complex ILs needs ~1000+ frames regardless of architecture (data-budget dominated); equivariance matters only in the scarce-data regime (N<100)
+
+### Decision rules (X)
+| Scenario | Recommended |
+|---|---|
+| Scarce data (N<100), complex IL, small capacity | equivariant l2 (4–6× data value) |
+| Scarce data, simple IL (BF4) | scalar l0 (equivariance redundant) |
+| Large data (N>500) | scalar l0 + data (chemical accuracy, architecture-independent) |
+| Force prediction, EMIM cation | equivariant l2 (force gap +1709 meV/Å) |
+| Force prediction, Pyr14 cation | scalar l0 (force gap −90) |
 - Power-law exponent −1.49 has medium confidence (3-point fit; N=30 outlier) — more N points needed (future work)
 - 128-ch overfitting caveat: Q verification limited by e3nn-version incompatibility of legacy models; EMIM 32-ch underfits (system-specific, not training parameter)
 - Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
