@@ -46,18 +46,13 @@ Simple systems (EMIM-BF4) show no consistent gap (≈0, seed noise); complex sys
 - Mean cation ranking (EMIM > BMIM > Pyr14) robust; seed-level fluctuations reported honestly
 
 ### 3.8 Bulk 2-ion-pair proof of concept (C)
-- WSL-PySCF B3LYP/STO-3G energies+forces for 2-ion-pair EMIM-BF4 (48 atoms); 30 frames generated (≈3–4 min/frame)
-- MACE l0/l2 trained: force RMSE 342 (7 frames) → 269 (30) → 133 (l0, 41) / 91 meV/Å (l2, 41) — data-driven improvement path confirmed
-- **Equivariance helps in bulk too**: l2 beats l0 by 32% at 41 frames (91 vs 133 meV/Å) — consistent with isolated-ion-pair finding
-- Bulk MD not yet feasible at 41 frames (NVT temperature blow-up — needs ~100–200 frames; force RMSE <10 meV/Å); honest limitation
-- Bulk (multi-ion-pair) data generation → training path established; 41-frame merged dataset (outlier-filtered)
+WSL-PySCF B3LYP/STO-3G energies and forces were generated for a 2-ion-pair EMIM-BF4 cell (48 atoms, periodic 16 Å box; ≈3–4 min/frame). MACE l0/l2 were trained on 7→59 frames: force RMSE drops monotonically 467 → 310 → 237 → 133 → 122 meV/Å (l0) and to 79 meV/Å (l2) at 59 frames — **data-driven improvement is confirmed in bulk**, and **equivariance helps in bulk too** (l2 beats l0 by 35%). Bulk MD at ≤59 frames is not feasible (NVT temperature blow-up; needs force RMSE <10 meV/Å).
 
 ### 3.9 Bulk data quality (W) + learning curve (AB)
-- Batch 1 (30 frames): energy spread 12 eV, no outliers — good sampling
-- Batch 2: 1 outlier (large-displacement sampling — ion overlap) — filtered by >3×IQR
-- Merged 59-frame dataset; force RMSE = 1895 × N^−0.66 (7→59 frames: 467→122 meV/Å, l0)
-- v5 (59 frames): l2 = 79.1 meV/Å (equivariance +35% over l0 = 122.0) — equivariance advantage persists in bulk
-- **MD requirement (<10 meV/Å) ≈ 2743 frames at STO-3G level — bulk MD needs a large DFT budget or higher-level DFT**
+Batch 1 (30 frames) shows a 12-eV energy spread with no outliers; batch 2 contributes 1 outlier (large-displacement sampling — ion overlap), removed by >3×IQR, yielding a 59-frame merged dataset. The bulk force learning curve follows force RMSE = 1895 × N^−0.66 — **MD requirement (<10 meV/Å) ≈ 2743 frames at STO-3G level**, i.e., bulk MD needs a large DFT budget or a higher-level DFT method.
+
+### 3.10 Energy generalization (AI/AJ/AK/AL)
+Energy accuracy decomposes into three factors: (i) force supervision — with forces, energy is accurate (bulk v5: 67 meV over an 18-eV span; force-free ef training under e3nn 0.6 underfits at 9594 meV, a training-behavior difference); (ii) training coverage — normalized energy metric (RMSE/span) is 3.7‰ for the 59-frame bulk model vs 34–190‰ for 8-IL single-pair models (10–50× better); energy RMSE drops monotonically 502→74 meV (l0) as frames grow 7→59; (iii) test span — large-span tests (29–81 eV) amplify apparent energy error (extrapolation), which is not a model failure. Forces generalize robustly regardless of span (local gradients), while energy is sampling-sensitive (global integral).
 
 ## 4. Discussion
 - Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
