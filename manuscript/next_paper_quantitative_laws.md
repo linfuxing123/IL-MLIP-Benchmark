@@ -87,11 +87,10 @@
 - GitHub linfuxing123/IL-MLIP-Benchmark (v1.7.2+) + Zenodo 10.5281/zenodo.22027477
 - Analysis scripts: workspace/chem-library (b1–b7, d1, c1–c20, q*, r*, u*, w*, x*, aa*, ab*)
 
-## 6. Environment-reliability caveat (round 4)
-- **e3nn 0.6: MACE energy prediction unreliable** (energy-only: 9594/10472 meV at 128/32 ch; force-model energy: 8262 meV de-offset — not an E0 baseline artifact; forces_weight=0 + 800 epochs: unchanged 9594)
-- **Force prediction reliable under e3nn 0.6** (8-IL force models 269→91 meV/Å; bulk v5 79 meV/Å)
-- Cause: ef loss with forces_weight=10 optimizes forces at the expense of energy; energy-only training does not converge under e3nn 0.6 (deep issue — not fixable via forces_weight/epochs; likely readout/initialization)
-- **forces_weight scan (AG): 1/5/10 all give identical energy RMSE (11830 meV) — energy error is intrinsic (independent of loss weighting), confirming energy unreliability is environmental/architectural, not a weighting artifact**
+## 6. Environment & generalization (rounds 4–5)
+- **Energy generalization asymmetry (AH)**: same-distribution energy is accurate (bulk v5 l2: 18 meV) but cross-sampling energy generalization is poor (8262 meV on a different conformational sample) — energy (absolute, global integral) is sampling-sensitive, forces (local gradients) generalize robustly (8-IL 269→91 meV/Å)
+- Data scales are consistent (0.0 eV mean difference) — cross-sampling evaluation is valid
+- **Correction to round-4 caveat**: energy is not intrinsically unreliable under e3nn 0.6; the 9594/10472/8262 numbers reflect cross-sampling generalization (and possibly legacy-data training-set effects), not environment failure. Force findings (B2, B5, D1, C, AA, AB) are robust; energy findings (B1, B3, H, U) need same-distribution re-verification
 - **Honest split: force-based findings (B2, B5, D1, C, AA, AB) are e3nn 0.6-reliable; energy-based findings (B1, B3, H, U) rest on legacy e3nn 0.5 data and require re-verification**
 
 ## Figures
