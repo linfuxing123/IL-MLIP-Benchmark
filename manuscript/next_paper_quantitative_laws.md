@@ -85,7 +85,13 @@
 
 ## 5. Data availability
 - GitHub linfuxing123/IL-MLIP-Benchmark (v1.7.2+) + Zenodo 10.5281/zenodo.22027477
-- Analysis scripts: workspace/chem-library (b1–b7, d1)
+- Analysis scripts: workspace/chem-library (b1–b7, d1, c1–c20, q*, r*, u*, w*, x*, aa*, ab*)
+
+## 6. Environment-reliability caveat (round 4)
+- **e3nn 0.6: MACE energy prediction unreliable** (energy-only: 9594/10472 meV at 128/32 ch; force-model energy: 8262 meV de-offset — not an E0 baseline artifact)
+- **Force prediction reliable under e3nn 0.6** (8-IL force models 269→91 meV/Å; bulk v5 79 meV/Å)
+- Cause: ef loss with forces_weight=10 optimizes forces at the expense of energy; energy-only training does not converge under e3nn 0.6
+- **Honest split: force-based findings (B2, B5, D1, C, AA, AB) are e3nn 0.6-reliable; energy-based findings (B1, B3, H, U) rest on legacy e3nn 0.5 data and require re-verification**
 
 ## Figures
 - quantitative_laws_fig.png (power law, data efficiency, radial dominance)
