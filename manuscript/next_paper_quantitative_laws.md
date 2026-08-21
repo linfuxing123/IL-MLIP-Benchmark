@@ -21,9 +21,9 @@
 - **Equivariance value = data-efficiency gain, capacity-dependent**
 
 ### 3.3 Radial-dominance law (B2)
-- Force error 98.8% (l0) / 94.8% (l2) radial
-- Equivariance cuts radial error 60%, tangential only 13%
-- **Equivariance improves force magnitude, not direction**
+- Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
+- Equivariance cuts radial (magnitude) error most (EMIM-BF4: −60%), tangential (direction) less
+- **Equivariance improves force magnitude primarily; direction error secondary, system-dependent**
 
 ### 3.4 Cation-modulated force gaps, quantified (B5)
 - Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å
