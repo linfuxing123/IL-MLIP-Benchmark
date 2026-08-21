@@ -54,6 +54,22 @@ where:
 
 **Unified physics**: symmetry s maps the intrinsic complexity κ to an effective κ/s. If capacity C < κ/s, added data cannot substitute equivariance (phase transition, our finding); if C > κ/s, data is effective AND the equivariant exponents α, β are higher, so equivariance pulls further ahead with scale (Ngo). This unifies the small-scale phase transition with the large-scale power law into **one expression covering the whole spectrum** — the candidate "equivariance-substitution law" (potential eponymous law). *Testable prediction*: β_eff should rise sigmoidally from 0 to β_max(s) with capacity C; locating C\* requires intermediate capacities (64/96 ch, in progress).
 
+### 3.2f Unified law — mechanism and cross-system predictive form
+To promote the unified law from an empirical form to a mechanistic, predictive one, we introduce:
+- **Symmetry discount**: effective complexity κ_eff = κ/s^m (symmetry s reduces effective degrees of freedom, echoing arXiv:2502.05300);
+- **Critical capacity**: C\* = λ·κ/s^m (λ a (possibly) universal constant) — C\* grows linearly with intrinsic complexity κ and inversely with symmetry s;
+- **Transition width**: w = C\*·σ_w (σ_w the sharpness ratio — small = sharp transition, large = smooth);
+- β_max(s=2, MACE l2) ≈ 1.49.
+
+**Cross-system / cross-symmetry predictions** (the power of a law — all testable):
+1. **Simple ILs (small κ)**: C\* small → equivariance gap vanishes early (EMIM-BF4, gap ≈ 0 ✓ — already observed);
+2. **More complex ILs** (larger anion / longer alkyl): C\* larger → needs more capacity/data to substitute equivariance;
+3. **Higher-order equivariance (large s, e.g. l=4)**: C\* lower → gap vanishes earlier.
+
+The full unified law reads:
+**L = L∞ + A_s·N^(−α(s)) + B_s·D^(−β_max(s)·σ((C − λκ/s^m)/(λκ/s^m·σ_w)))**
+*Verification*: the three limits reduce correctly; the cross-system trend (EMIM ≈ 0) is confirmed; the smooth-transition prediction (64-ch β_eff/β_max between 0 and 1) is the decisive test (64/96-ch in progress).
+
 ### 3.3 Radial-dominance law (B2)
 Decomposing force prediction error into radial (along the reference force) and tangential components across all 8 ILs, the error is radial-dominated (59–99%; EMIM-BF4 98.8%, BMIM-PF6 74–59%). Equivariance reduces radial (magnitude) error most (EMIM-BF4: −60%), leaving tangential (direction) error nearly unchanged — **equivariance improves force magnitude prediction, not direction** in relative terms. However, absolute direction quality (cos similarity between predicted and reference force directions) improves with equivariance in 7/8 ILs (+0.03 to +0.16; Pyr14-FSI +0.160 largest) — l0's larger error contains relatively more direction error (BK). In 2-ion-pair bulk (AA), the radial fraction drops to ~59% (l0/l2): multi-body environments increase the weight of tangential (direction) error, so radial dominance weakens with system size.
 
