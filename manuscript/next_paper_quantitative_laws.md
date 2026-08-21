@@ -59,10 +59,11 @@
 - Bulk MD not yet feasible at 41 frames (NVT temperature blow-up — needs ~100–200 frames; force RMSE <10 meV/Å); honest limitation
 - Bulk (multi-ion-pair) data generation → training path established; 41-frame merged dataset (outlier-filtered)
 
-### 3.9 Bulk data quality (W)
+### 3.9 Bulk data quality (W) + learning curve (AB)
 - Batch 1 (30 frames): energy spread 12 eV, no outliers — good sampling
 - Batch 2: 1 outlier (large-displacement sampling — ion overlap) — filtered by >3×IQR
-- Merged 41-frame dataset (bulk_emim_bf4_all.xyz) for v4 retraining
+- Merged 59-frame dataset; force RMSE = 1895 × N^−0.66 (7→59 frames: 467→122 meV/Å, l0)
+- **MD requirement (<10 meV/Å) ≈ 2743 frames at STO-3G level — bulk MD needs a large DFT budget or higher-level DFT**
 
 ## 4. Discussion
 - Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
