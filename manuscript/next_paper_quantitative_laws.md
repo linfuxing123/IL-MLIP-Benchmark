@@ -39,6 +39,21 @@ Testing simple unified forms (double power law gap = A·N^−b1·C^−b2; equiva
 - Physical picture: when model capacity < IL conformational complexity, added data cannot substitute equivariance (the bottleneck is capacity, not data). This unifies the power law (B1), data-efficiency (B3), and capacity-substitution (H) laws.
 - *Caveat (honest)*: only 2–3 N-points per capacity; the phase transition is indicative — mid capacities (64/96 ch) are needed to locate C\* and test whether the transition is sharp or smooth. Also note the simple-system (EMIM-BF4) gap is ~0 (equivariance redundant), so the transition applies to complex ILs (positive gap).
 
+### 3.2e Unified scaling law (phase-transition + Ngo large-scale)
+We fuse the phase transition (3.2d) with the recent large-scale scaling-law evidence of Ngo & Ravanbakhsh (ICLR 2026) into a single candidate theorem:
+**L(N, D, C; s, κ) = L∞ + A_s·N^(−α(s)) + B_s·D^(−β_eff(C; s, κ))**
+where:
+- **α(s), β_max(s) increase with symmetry degree s** (Ngo, large-scale: α 0.28→0.82, β 0.31→0.75) — equivariance scales better at large scale;
+- **β_eff(C; s, κ) = β_max(s)·σ((C − κ/s)/w)** is a sigmoid transition in capacity (our small-scale phase transition);
+- **κ** = intrinsic problem complexity; **κ/s** = effective complexity (symmetry *reduces* effective complexity, echoing "symmetry controls the effective number of parameters", arXiv:2502.05300).
+
+**Three limits verify**:
+1. C ≫ κ/s (large-scale, Ngo regime): σ→1 → reduces to Ngo's double power law ✓
+2. C ≪ κ/s (capacity-scarce): σ→0 → data term D^0 → gap constant, data cannot substitute equivariance ✓ (our 32-ch)
+3. s = 0 (non-equivariant): α, β minimal → worst scaling ✓
+
+**Unified physics**: symmetry s maps the intrinsic complexity κ to an effective κ/s. If capacity C < κ/s, added data cannot substitute equivariance (phase transition, our finding); if C > κ/s, data is effective AND the equivariant exponents α, β are higher, so equivariance pulls further ahead with scale (Ngo). This unifies the small-scale phase transition with the large-scale power law into **one expression covering the whole spectrum** — the candidate "equivariance-substitution law" (potential eponymous law). *Testable prediction*: β_eff should rise sigmoidally from 0 to β_max(s) with capacity C; locating C\* requires intermediate capacities (64/96 ch, in progress).
+
 ### 3.3 Radial-dominance law (B2)
 Decomposing force prediction error into radial (along the reference force) and tangential components across all 8 ILs, the error is radial-dominated (59–99%; EMIM-BF4 98.8%, BMIM-PF6 74–59%). Equivariance reduces radial (magnitude) error most (EMIM-BF4: −60%), leaving tangential (direction) error nearly unchanged — **equivariance improves force magnitude prediction, not direction** in relative terms. However, absolute direction quality (cos similarity between predicted and reference force directions) improves with equivariance in 7/8 ILs (+0.03 to +0.16; Pyr14-FSI +0.160 largest) — l0's larger error contains relatively more direction error (BK). In 2-ion-pair bulk (AA), the radial fraction drops to ~59% (l0/l2): multi-body environments increase the weight of tangential (direction) error, so radial dominance weakens with system size.
 
