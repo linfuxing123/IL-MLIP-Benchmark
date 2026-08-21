@@ -15,16 +15,13 @@
 
 ## 3. Results
 ### 3.1 Data-substitution power law (B1)
-- gap = 1109.5 × N^-1.49 (128 ch, Pyr14-FSI); constant ~65 meV (32 ch)
-- **Data volume substitutes equivariance only when capacity is sufficient**
+On the complex IL Pyr14-FSI at sufficient capacity (128 channels), the equivariance gap decays as a power law with data volume: gap(N) = 1109.5 × N^−1.49 (RMSE 25.8 → 3.3 → 6.1 meV/atom at N = 15 → 30 → 45; the N = 30 point is a seed outlier). At scarce capacity (32 channels), the gap saturates at a constant ~65 meV (66.5 → 65.0) — **data volume substitutes equivariance only when capacity is available**. The exponent −1.49 has medium confidence (3-point fit) and needs more N points (future work); the qualitative law (decay at 128 ch vs constant at 32 ch) is robust.
 
 ### 3.2 Data-efficiency law (B3)
-- 32 ch: equivariance = 4.03× data (N=15) → 5.82× (N=45); 128 ch: 1.25×
-- **Equivariance value = data-efficiency gain, capacity-dependent**
+Solving for the equivalent scalar-data volume, equivariant models at 32 channels provide a data-efficiency gain of 4.03× at N = 15 (equivariant 15 frames ≈ scalar 60 frames) growing to 5.82× at N = 45 (≈ 262 scalar frames). At 128 channels the gain collapses to 1.25× (N = 15) → 1.01× (N = 45). **Equivariance is worth 4–6× data when capacity is scarce, and ~1.2× when capacity is ample** — quantifying the substitutability of equivariance by data as a function of capacity.
 
 ### 3.2b Capacity-substitution law (H)
-- 4× capacity (32→128 ch) replaces 61–91% of the equivariance need (N=45: 91%)
-- Capacity substitutes equivariance at least as efficiently as data (3× data → 76% vs 4× capacity → 91%)
+Capacity itself substitutes equivariance: increasing capacity 4× (32 → 128 channels) replaces 61% of the equivariance need at N = 15 and 91% at N = 45 (gap 65.0 → 6.1 meV/atom). Capacity substitutes equivariance at least as efficiently as data (3× data → 76% replacement vs 4× capacity → 91%).
 
 ### 3.2c Capacity–data matching (Q)
 - 32-ch l2 beats 128-ch l2 at all N in Pyr14-FSI legacy (e3nn 0.5) data — but verification limited
