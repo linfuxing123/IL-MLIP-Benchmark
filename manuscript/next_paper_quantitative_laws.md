@@ -90,3 +90,9 @@ Energy accuracy decomposes into three factors: (i) force supervision — with fo
 
 ## Figures
 - quantitative_laws_fig.png (power law, data efficiency, radial dominance)
+- quantitative_laws_fig2.png (data efficiency, cation ranking, seed stability)
+- quantitative_laws_fig3.png (bulk energy learning curve, normalized energy metric)
+- gap_surface.png (substitutability surface: gap as function of N and capacity)
+
+## References
+See quantitative_laws_refs.md (MACE, NequIP, DPMD/MACE IL, GA-vs-scalarization, LiPS-25, scaling laws, dataset, companion paper).
