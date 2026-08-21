@@ -20,6 +20,10 @@
 - 32 ch: equivariance = 4.03× data (N=15) → 5.82× (N=45); 128 ch: 1.25×
 - **Equivariance value = data-efficiency gain, capacity-dependent**
 
+### 3.2b Capacity-substitution law (H)
+- 4× capacity (32→128 ch) replaces 61–91% of the equivariance need (N=45: 91%)
+- Capacity substitutes equivariance at least as efficiently as data (3× data → 76% vs 4× capacity → 91%)
+
 ### 3.3 Radial-dominance law (B2)
 - Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
 - Equivariance cuts radial (magnitude) error most (EMIM-BF4: −60%), tangential (direction) less
