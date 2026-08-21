@@ -55,8 +55,11 @@ Batch 1 (30 frames) shows a 12-eV energy spread with no outliers; batch 2 contri
 Energy accuracy decomposes into three factors: (i) force supervision — with forces, energy is accurate (bulk v5: 67 meV over an 18-eV span; force-free ef training under e3nn 0.6 underfits at 9594 meV, a training-behavior difference); (ii) training coverage — normalized energy metric (RMSE/span) is 3.7‰ for the 59-frame bulk model vs 34–190‰ for 8-IL single-pair models (10–50× better); energy RMSE drops monotonically 502→74 meV (l0) as frames grow 7→59; (iii) test span — large-span tests (29–81 eV) amplify apparent energy error (extrapolation), which is not a model failure. Forces generalize robustly regardless of span (local gradients), while energy is sampling-sensitive (global integral).
 
 ## 4. Discussion
-- Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
-- Practical guidance: chemical accuracy (43 meV/atom) on complex ILs needs ~1000+ frames regardless of architecture (data-budget dominated); equivariance matters only in the scarce-data regime (N<100)
+**Unified picture.** Equivariance acts as a symmetry prior whose value is quantified by three substitutable resources: data (gap ~ N^−1.49 when capacity is ample; 4–6× data value when capacity is scarce), capacity (4× capacity replaces 61–91% of the equivariance need), and composition (force gaps are cation-ordered: EMIM > BMIM > Pyr14; energy gaps are not anion-ordered). The force benefit is primarily magnitude (radial), not direction, and weakens in bulk (multi-body direction error). PAC analysis shows the empirical substitution rate is 3–4× faster than the worst-case bound. Energy generalization decomposes into force supervision, training coverage, and test span — forces generalize robustly, energy is sampling-sensitive.
+
+**Practical guidance.** Chemical accuracy (43 meV/atom) on complex ILs needs ~1000+ frames regardless of architecture (data-budget dominated); equivariance matters only in the scarce-data regime (N<100). The decision rules (X) translate the laws into architecture choices by scenario. Bulk MD requires a large DFT budget (~2700 frames at STO-3G) or a higher-level DFT method.
+
+**Limitations.** STO-3G level; single architecture family (MACE); 3-point learning curves (exponent −1.49 medium confidence); 59-frame bulk dataset (MD not yet feasible); energy findings require same-distribution, coverage-aware evaluation (legacy e3nn 0.5 data for B1/B3/H/U vs e3nn 0.6 force findings for B2/B5/D1/C).
 
 ### Decision rules (X)
 | Scenario | Recommended |
@@ -69,7 +72,7 @@ Energy accuracy decomposes into three factors: (i) force supervision — with fo
 - Power-law exponent −1.49 has medium confidence (3-point fit; N=30 outlier) — more N points needed (future work)
 - 128-ch overfitting caveat: Q verification limited by e3nn-version incompatibility of legacy models; EMIM 32-ch underfits (system-specific, not training parameter)
 - Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
-- Limitations: STO-3G level, single architecture family (MACE), 3-point learning curves, small bulk dataset (7 frames concept validation)
+- Limitations: STO-3G level, single architecture family (MACE), 3-point learning curves, small bulk dataset (59 frames; MD not yet feasible), energy findings require same-distribution/coverage-aware evaluation
 
 ## 5. Data availability
 - GitHub linfuxing123/IL-MLIP-Benchmark (v1.7.2+) + Zenodo 10.5281/zenodo.22027477
