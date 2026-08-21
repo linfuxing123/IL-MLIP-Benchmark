@@ -50,9 +50,15 @@
 - Only 4/8 ILs show sign-stable force gaps across 3 seeds (e.g., EMIM-NTf2 mean +530 but std 472)
 - Mean cation ranking (EMIM > BMIM > Pyr14) robust; seed-level fluctuations reported honestly
 
+### 3.8 Bulk 2-ion-pair proof of concept (C)
+- WSL-PySCF B3LYP/STO-3G energies+forces for 2-ion-pair EMIM-BF4 (48 atoms); 20+ frames generated (≈3–4 min/frame)
+- MACE l0/l2 trained on 7 frames → force RMSE 342 meV/Å (concept validation; more frames improve)
+- Bulk (multi-ion-pair) modeling path established: data generation → training → MD
+
 ## 4. Discussion
 - Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
 - Power-law exponent −1.49 has medium confidence (3-point fit; N=30 outlier) — more N points needed (future work)
+- 128-ch overfitting caveat: the small 128-ch gap may understate equivariance value; capacity–data matching favors small capacity at small N
 - Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
 - Limitations: STO-3G level, single architecture family (MACE), 3-point learning curves, small bulk dataset (7 frames concept validation)
 
