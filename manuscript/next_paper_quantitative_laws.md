@@ -1,25 +1,46 @@
 # Quantitative Laws of Equivariance Substitutability in Ionic-Liquid Machine-Learned Interatomic Potentials
 
-## Abstract (draft)
+## 1. Introduction
+- Equivariant MLIPs dominate IL modeling; *how* their advantage scales is unquantified
+- Gap: previous work qualitative (this series); here: quantitative laws
+- Research questions: (i) how does the equivariance gap scale with data? (ii) what is equivariance worth in data terms? (iii) what do force errors tell about the nature of the advantage?
 
-Equivariant neural network interatomic potentials (MACE, NequIP) dominate ionic-liquid (IL) modeling, yet *how* their advantage scales with data, capacity, and system composition has not been quantified. Building on a controlled l_max ablation (0 vs 2) across 8 ILs, we derive three quantitative laws:
+## 2. Methods
+- MACE l_max ablation (0 vs 2), 32/128 channels, seeds 7/42/123
+- IL dataset: 8 ILs, 435 configurations (B3LYP/STO-3G) + forces
+- Learning curves: N = 15/30/45 (Pyr14-FSI, EMIM-BF4)
+- Force anisotropy: decompose prediction error into radial (along reference force) and tangential components
 
-1. **Data-substitution power law**: the equivariance energy gap decays as gap ~ N^-1.49 with data volume when capacity is sufficient (128 channels), but saturates at a constant ~65 meV when capacity is scarce (32 channels) — data volume substitutes equivariance only when capacity is available.
+## 3. Results
+### 3.1 Data-substitution power law (B1)
+- gap = 1109.5 × N^-1.49 (128 ch, Pyr14-FSI); constant ~65 meV (32 ch)
+- **Data volume substitutes equivariance only when capacity is sufficient**
 
-2. **Data-efficiency law**: under capacity scarcity, equivariant models provide a 4.0–5.8× data-efficiency gain (15 frames = 60 scalar frames; 45 = 262), collapsing to 1.2× at sufficient capacity.
+### 3.2 Data-efficiency law (B3)
+- 32 ch: equivariance = 4.03× data (N=15) → 5.82× (N=45); 128 ch: 1.25×
+- **Equivariance value = data-efficiency gain, capacity-dependent**
 
-3. **Radial-dominance law (forces)**: force prediction error is 95–99% radial (along the reference force direction) for both architectures; equivariance reduces radial (magnitude) error by 60% but leaves tangential (direction) error nearly unchanged — equivariance improves *force magnitude* prediction, not direction.
+### 3.3 Radial-dominance law (B2)
+- Force error 98.8% (l0) / 94.8% (l2) radial
+- Equivariance cuts radial error 60%, tangential only 13%
+- **Equivariance improves force magnitude, not direction**
 
-A fourth empirical regularity quantifies the cation modulation of force gaps: mean force gap (l_max=0 − l_max=2) ranks EMIM (+1709 meV/Å) > BMIM (+333) > Pyr14 (−90), confirming that equivariance's force benefit is cation-controlled, not anion-driven.
+### 3.4 Cation-modulated force gaps, quantified (B5)
+- Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å
+- Seed robustness: 4/8 ILs sign-stable across 3 seeds; mean ranking robust
 
-These laws make the substitutability of equivariance — by data, capacity, and composition — quantitative and predictive, providing practical guidance for MLIP deployment on ILs under limited data or compute budgets.
+### 3.5 Simple vs complex (B7)
+- Simple (EMIM-BF4): gap ≈ 0 (noise); complex (Pyr14-FSI): positive + decaying
+- Scalar learning exponent: complex −0.40 vs simple −0.30 (data more valuable on complex)
 
-## Key numbers
-- gap ~ 1109.5 × N^-1.49 (Pyr14-FSI, 128 ch); 66.5→65.0 meV (32 ch, constant)
-- Data efficiency: 4.03× (N=15, 32 ch) → 5.82× (N=45); 1.25× (128 ch)
-- Force error radial fraction: 98.8% (l0) / 94.8% (l2); tangential −13% only
-- Force gap by cation: EMIM +1708.8 / BMIM +332.6 / Pyr14 −90.2 meV/Å
+## 4. Discussion
+- Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), not direction
+- Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
+- Limitations: STO-3G level, single architecture family (MACE), isolated-ion-pair force analysis
 
-## Status
-- Draft abstract — candidates: JCTC companion, JCIM, Digital Discovery (OA check)
-- Data: existing 8-IL benchmark + new bulk 2-ion-pair dataset (in progress)
+## 5. Data availability
+- GitHub linfuxing123/IL-MLIP-Benchmark (v1.7.2+) + Zenodo 10.5281/zenodo.22027477
+- Analysis scripts: workspace/chem-library (b1–b7, d1)
+
+## Figures
+- quantitative_laws_fig.png (power law, data efficiency, radial dominance)
