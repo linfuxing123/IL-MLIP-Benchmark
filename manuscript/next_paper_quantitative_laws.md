@@ -6,10 +6,12 @@
 - Research questions: (i) how does the equivariance gap scale with data? (ii) what is equivariance worth in data terms? (iii) what do force errors tell about the nature of the advantage?
 
 ## 2. Methods
-- MACE l_max ablation (0 vs 2), 32/128 channels, seeds 7/42/123
-- IL dataset: 8 ILs, 435 configurations (B3LYP/STO-3G) + forces
-- Learning curves: N = 15/30/45 (Pyr14-FSI, EMIM-BF4)
-- Force anisotropy: decompose prediction error into radial (along reference force) and tangential components
+
+**Models and training.** All models use MACE (many-body equivariant message passing) with the maximum angular momentum ablated (l_max = 0, scalar: `64x0e`/`128x0e`; l_max = 2, equivariant: `64x0e+64x1o+64x2e`/`128x0e+128x1o+128x2e`) and hidden-channel capacity 32 or 128. Training used the ef loss (energy weight 1.0; forces weight 10.0 where forces are available), E0s = average, r_max = 5.0 Å, 300–400 epochs, seeds 7/42/123. SWA is used for l_max = 0; EMA (decay 0.99) for l_max ≥ 1 (SWA is unstable under e3nn 0.6 for equivariant channels).
+
+**Datasets.** Eight ILs (EMIM/BMIM/Pyr14 × BF4/PF6/NTf2/FSI), 435 clean conformations, B3LYP/STO-3G energies (PySCF via WSL), forces computed for all 8 ILs (per-atom `forces:R:3` columns). Learning curves use N = 15/30/45 configurations with a fixed 15-frame test set. Bulk data: 59-frame 2-ion-pair EMIM-BF4 (48 atoms, periodic 16 Å box) with energies and forces.
+
+**Analysis methods.** (i) Equivariance gap: ΔRMSE(l_max = 0 − l_max = 2) on held-out test sets. (ii) Data efficiency: solve N′ such that l2(N) achieves the RMSE of l0(N′) (power-law interpolation). (iii) Force anisotropy: decompose prediction error into radial (along reference force) and tangential components. (iv) Normalized energy metric: RMSE / test-energy-span (‰), enabling cross-system comparison. (v) Bulk learning curve: force and energy RMSE vs training frames (7–59).
 
 ## 3. Results
 ### 3.1 Data-substitution power law (B1)
