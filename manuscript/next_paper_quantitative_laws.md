@@ -51,9 +51,10 @@
 - Mean cation ranking (EMIM > BMIM > Pyr14) robust; seed-level fluctuations reported honestly
 
 ### 3.8 Bulk 2-ion-pair proof of concept (C)
-- WSL-PySCF B3LYP/STO-3G energies+forces for 2-ion-pair EMIM-BF4 (48 atoms); 20+ frames generated (≈3–4 min/frame)
-- MACE l0/l2 trained on 7 frames → force RMSE 342 meV/Å (concept validation; more frames improve)
-- Bulk (multi-ion-pair) modeling path established: data generation → training → MD
+- WSL-PySCF B3LYP/STO-3G energies+forces for 2-ion-pair EMIM-BF4 (48 atoms); 30 frames generated (≈3–4 min/frame)
+- MACE l0/l2 trained: force RMSE 342 (7 frames) → 269 meV/Å (30 frames) — data-driven improvement path confirmed
+- Bulk MD not yet feasible at 30 frames (NVT temperature blow-up — needs ~100+ frames); honest limitation
+- Bulk (multi-ion-pair) data generation → training path established
 
 ## 4. Discussion
 - Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
