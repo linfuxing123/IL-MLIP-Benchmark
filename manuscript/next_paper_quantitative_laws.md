@@ -33,10 +33,19 @@
 - Simple (EMIM-BF4): gap ≈ 0 (noise); complex (Pyr14-FSI): positive + decaying
 - Scalar learning exponent: complex −0.40 vs simple −0.30 (data more valuable on complex)
 
+### 3.6 PAC calibration (D2)
+- Empirical data-substitution rate (N^-1.49) is 3–4× the PAC bound (N^-0.5): PAC is a loose worst-case upper bound; actual substitutability is faster
+- Physical origin: regular IL conformational distributions, many-body compression by MACE, force+energy joint supervision
+
+### 3.7 Seed robustness (D1)
+- Only 4/8 ILs show sign-stable force gaps across 3 seeds (e.g., EMIM-NTf2 mean +530 but std 472)
+- Mean cation ranking (EMIM > BMIM > Pyr14) robust; seed-level fluctuations reported honestly
+
 ## 4. Discussion
-- Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), not direction
+- Unified picture: equivariance = symmetry prior worth 4–6× data when capacity-scarce, ~1.2× when capacity-free; force benefit = magnitude (radial), system-dependent
+- Power-law exponent −1.49 has medium confidence (3-point fit; N=30 outlier) — more N points needed (future work)
 - Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
-- Limitations: STO-3G level, single architecture family (MACE), isolated-ion-pair force analysis
+- Limitations: STO-3G level, single architecture family (MACE), 3-point learning curves, small bulk dataset (7 frames concept validation)
 
 ## 5. Data availability
 - GitHub linfuxing123/IL-MLIP-Benchmark (v1.7.2+) + Zenodo 10.5281/zenodo.22027477
