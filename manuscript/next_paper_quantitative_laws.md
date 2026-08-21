@@ -88,9 +88,10 @@
 - Analysis scripts: workspace/chem-library (b1–b7, d1, c1–c20, q*, r*, u*, w*, x*, aa*, ab*)
 
 ## 6. Environment & generalization (rounds 4–5)
-- **Energy generalization asymmetry (AH)**: same-distribution energy is accurate (bulk v5 l2: 18 meV) but cross-sampling energy generalization is poor (8262 meV on a different conformational sample) — energy (absolute, global integral) is sampling-sensitive, forces (local gradients) generalize robustly (8-IL 269→91 meV/Å)
+- **Energy generalization asymmetry (AH)**: same-distribution energy is accurate (bulk v5 l2: 18 meV; force+energy consistent with 79 meV/Å forces) but cross-sampling energy generalization is poor (8262 meV) — energy (absolute, global integral) is sampling-sensitive, forces (local gradients) generalize robustly (8-IL 269→91 meV/Å)
+- **Unified picture (AI)**: (i) energy learning requires force supervision — with forces, energy is accurate (v5); (ii) force-free ef training under e3nn 0.6 underfits energy (9594 meV; legacy e3nn 0.5 trained normally at 246 meV) — a training-behavior difference, not intrinsic unreliability; (iii) cross-sampling energy generalization is poor
 - Data scales are consistent (0.0 eV mean difference) — cross-sampling evaluation is valid
-- **Correction to round-4 caveat**: energy is not intrinsically unreliable under e3nn 0.6; the 9594/10472/8262 numbers reflect cross-sampling generalization (and possibly legacy-data training-set effects), not environment failure. Force findings (B2, B5, D1, C, AA, AB) are robust; energy findings (B1, B3, H, U) need same-distribution re-verification
+- Force findings (B2, B5, D1, C, AA, AB) are robust; energy findings (B1, B3, H, U) hold same-distribution under force supervision but require environment/distribution caveats
 - **Honest split: force-based findings (B2, B5, D1, C, AA, AB) are e3nn 0.6-reliable; energy-based findings (B1, B3, H, U) rest on legacy e3nn 0.5 data and require re-verification**
 
 ## Figures
