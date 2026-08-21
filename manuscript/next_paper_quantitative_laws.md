@@ -25,8 +25,8 @@
 - Capacity substitutes equivariance at least as efficiently as data (3× data → 76% vs 4× capacity → 91%)
 
 ### 3.2c Capacity–data matching (Q)
-- 32-ch l2 beats 128-ch l2 at all N (204.8 vs 220.2 at N=15; 152.4 vs 154.5 at N=45) — 128-ch overfits small data
-- Caveat: the small 128-ch energy gap (25.8 meV) in the companion study may be partly a 128-ch overfitting artifact; true equivariance gain at 32 ch is larger (66.5) — under verification
+- 32-ch l2 beats 128-ch l2 at all N in Pyr14-FSI (204.8 vs 220.2 at N=15) — but NOT reproduced in EMIM-BF4 (32-ch underfits: 2298 vs 53 meV/atom at N=30)
+- **Honest verdict: Q is Pyr14-specific, not universal; 128-ch overfitting claim needs re-examination (possible training artifact in Pyr14 128-ch l2 or EMIM 32-ch underfitting)**
 
 ### 3.3 Radial-dominance law (B2)
 - Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
