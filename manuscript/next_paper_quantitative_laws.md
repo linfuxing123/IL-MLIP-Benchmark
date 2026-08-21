@@ -24,6 +24,10 @@
 - 4× capacity (32→128 ch) replaces 61–91% of the equivariance need (N=45: 91%)
 - Capacity substitutes equivariance at least as efficiently as data (3× data → 76% vs 4× capacity → 91%)
 
+### 3.2c Capacity–data matching (Q)
+- 32-ch l2 beats 128-ch l2 at all N (204.8 vs 220.2 at N=15; 152.4 vs 154.5 at N=45) — 128-ch overfits small data
+- Caveat: the small 128-ch energy gap (25.8 meV) in the companion study may be partly a 128-ch overfitting artifact; true equivariance gain at 32 ch is larger (66.5) — under verification
+
 ### 3.3 Radial-dominance law (B2)
 - Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
 - Equivariance cuts radial (magnitude) error most (EMIM-BF4: −60%), tangential (direction) less
