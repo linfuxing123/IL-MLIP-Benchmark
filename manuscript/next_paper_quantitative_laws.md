@@ -45,9 +45,11 @@ Simple systems (EMIM-BF4) show no consistent gap (≈0, seed noise); complex sys
 - Empirical data-substitution rate (N^-1.49) is 3–4× the PAC bound (N^-0.5): PAC is a loose worst-case upper bound; actual substitutability is faster
 - Physical origin: regular IL conformational distributions, many-body compression by MACE, force+energy joint supervision
 
+### 3.6 PAC calibration (D2)
+The empirical data-substitution rate (gap ~ N^−1.49) is 3–4× faster than the PAC worst-case bound (gap ~ C/√N, N^−0.5): the empirical gap falls to 26% of the PAC prediction at N = 45. PAC is a loose worst-case upper bound; actual substitutability is faster. Physical origin: regular IL conformational distributions, many-body compression by MACE, and force+energy joint supervision (the latter providing gradient information that pure energy learning lacks).
+
 ### 3.7 Seed robustness (D1)
-- Only 4/8 ILs show sign-stable force gaps across 3 seeds (e.g., EMIM-NTf2 mean +530 but std 472)
-- Mean cation ranking (EMIM > BMIM > Pyr14) robust; seed-level fluctuations reported honestly
+Only 4/8 ILs show sign-stable force gaps across 3 seeds (e.g., EMIM-NTf2 mean +530 meV/Å but std 472 — seed-level sign flips), while the mean cation ranking (EMIM > BMIM > Pyr14) is robust. Force RMSE seed fluctuation is 3–26% (median <15%), so the 3-seed mean is a reliable estimator; the largest fluctuation (EMIM-BF4, 26%) coincides with the largest force gap. Seed-level fluctuations are reported honestly rather than averaged away.
 
 ### 3.8 Bulk 2-ion-pair proof of concept (C)
 WSL-PySCF B3LYP/STO-3G energies and forces were generated for a 2-ion-pair EMIM-BF4 cell (48 atoms, periodic 16 Å box; ≈3–4 min/frame). MACE l0/l2 were trained on 7→59 frames: force RMSE drops monotonically 467 → 310 → 237 → 133 → 122 meV/Å (l0) and to 79 meV/Å (l2) at 59 frames — **data-driven improvement is confirmed in bulk**, and **equivariance helps in bulk too** (l2 beats l0 by 35%). Bulk MD at ≤59 frames is not feasible (NVT temperature blow-up; needs force RMSE <10 meV/Å).
