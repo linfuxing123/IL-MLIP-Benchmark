@@ -25,8 +25,9 @@
 - Capacity substitutes equivariance at least as efficiently as data (3× data → 76% vs 4× capacity → 91%)
 
 ### 3.2c Capacity–data matching (Q)
-- 32-ch l2 beats 128-ch l2 at all N in Pyr14-FSI (204.8 vs 220.2 at N=15) — but NOT reproduced in EMIM-BF4 (32-ch underfits: 2298 vs 53 meV/atom at N=30)
-- **Honest verdict: Q is Pyr14-specific, not universal; 128-ch overfitting claim needs re-examination (possible training artifact in Pyr14 128-ch l2 or EMIM 32-ch underfitting)**
+- 32-ch l2 beats 128-ch l2 at all N in Pyr14-FSI legacy (e3nn 0.5) data — but verification limited
+- **e3nn 0.6 environment: energy-only MACE training underfits at all capacities** (128-ch 9594 vs legacy 246 meV; 32-ch 10472), while force training (ef loss + forces_weight) is normal (91–133 meV/Å bulk; 8-IL models)
+- **Honest verdict: legacy energy learning curves (incl. companion paper) cannot be reproduced under e3nn 0.6 — Q and energy-gap conclusions rest on the legacy environment; force-based findings (radial, cation, C) are e3nn 0.6-reliable**
 
 ### 3.3 Radial-dominance law (B2)
 - Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
