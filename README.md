@@ -16,11 +16,24 @@ First benchmark dataset of ionic liquid machine-learned interatomic potentials.
 | From-scratch SchNet baseline | 6115.7 meV/atom (263× worse) |
 | Ion rigidity (EDT) | E_cation 54 / E_anion 14 meV |
 
+## Quantitative laws (equivariance substitutability)
+| Law | Finding |
+|---|---|
+| Data-substitution power law | equivariance gap ~ N^−1.49 (128 ch); constant ~65 meV (32 ch) |
+| Data-efficiency law | equivariance = 4.0–5.8× data when capacity-scarce (32 ch); 1.25× (128 ch) |
+| Radial-dominance law | force error 95–99% radial; equivariance cuts magnitude (radial) not direction |
+| Cation ranking (forces) | mean force gap EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å |
+| PAC calibration | empirical data-substitution rate 3–4× faster than PAC bound |
+
+See `manuscript/next_paper_quantitative_laws.md` for the full draft.
+
 ## Files
 - `manuscript_il_mlip.md` — manuscript
+- `manuscript/next_paper_quantitative_laws.md` — quantitative laws paper draft
 - `cover_letter.md` — cover letter
 - `data/il_mlip_benchmark.zip` — packaged dataset
 - `workspace/chem-library/` — generation/filter/training/evaluation scripts
+- `lc_equivariance/quantitative_laws_fig.png` — laws figure
 
 ## Citation
 Lin, F. IL-MLIP-Benchmark: A Benchmark Dataset and Energy-Decomposition Analysis
