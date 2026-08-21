@@ -73,6 +73,8 @@ Energy accuracy decomposes into three factors: (i) force supervision — with fo
 | Large data (N>500) | scalar l0 + data (chemical accuracy, architecture-independent) |
 | Force prediction, EMIM cation | equivariant l2 (force gap +1709 meV/Å) |
 | Force prediction, Pyr14 cation | scalar l0 (force gap −90) |
+| Ample capacity, N>9 (energy) | scalar l0 (equivariance gap < chemical accuracy 43 meV) |
+| Scarce capacity, any N (energy) | equivariant l2 (gap constant ~65 meV, always above chemical threshold) |
 - Power-law exponent −1.49 has medium confidence (3-point fit; N=30 outlier) — more N points needed (future work)
 - 128-ch overfitting caveat: Q verification limited by e3nn-version incompatibility of legacy models; EMIM 32-ch underfits (system-specific, not training parameter)
 - Practical guidance: scalar MACE + data for simple ILs; equivariant for complex/scarce-data
