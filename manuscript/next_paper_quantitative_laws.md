@@ -29,19 +29,13 @@ Capacity itself substitutes equivariance: increasing capacity 4× (32 → 128 ch
 - **Honest verdict: legacy energy learning curves (incl. companion paper) cannot be reproduced under e3nn 0.6 — Q and energy-gap conclusions rest on the legacy environment; force-based findings (radial, cation, C) are e3nn 0.6-reliable**
 
 ### 3.3 Radial-dominance law (B2)
-- Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
-- Equivariance cuts radial (magnitude) error most (EMIM-BF4: −60%), tangential (direction) less
-- **Equivariance improves force magnitude primarily; direction error secondary, system-dependent**
-- **Bulk caveat (AA)**: in 2-ion-pair bulk, radial fraction drops to ~59% (l0/l2) — multi-body environments increase tangential (direction) error weight; radial dominance weakens with system size
+Decomposing force prediction error into radial (along the reference force) and tangential components across all 8 ILs, the error is radial-dominated (59–99%; EMIM-BF4 98.8%, BMIM-PF6 74–59%). Equivariance reduces radial (magnitude) error most (EMIM-BF4: −60%), leaving tangential (direction) error nearly unchanged — **equivariance improves force magnitude prediction, not direction**. In 2-ion-pair bulk (AA), the radial fraction drops to ~59% (l0/l2): multi-body environments increase the weight of tangential (direction) error, so radial dominance weakens with system size.
 
 ### 3.4 Cation-modulated force gaps, quantified (B5)
-- Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å (strong cation ordering)
-- Energy gap shows no consistent anion ordering (−143 to +3 meV; weak) — dimension-specificity quantified
-- Seed robustness: 4/8 ILs sign-stable across 3 seeds; mean ranking robust
+Mean force gap (l0_f − l2_f) ranks EMIM (+1709 meV/Å, all 3 ILs positive) > BMIM (+333, 2/3 positive) > Pyr14 (−90, 1/2 positive) — a strong cation ordering. Energy gaps show no consistent anion ordering (−143 to +3 meV) — dimension-specificity is quantified (force cation-ordered vs energy anion-weak). Seed robustness (D1): only 4/8 ILs are sign-stable across 3 seeds (e.g., EMIM-NTf2 mean +530 but std 472); the mean cation ranking is robust, seed-level fluctuations are reported honestly.
 
 ### 3.5 Simple vs complex (B7)
-- Simple (EMIM-BF4): gap ≈ 0 (noise); complex (Pyr14-FSI): positive + decaying
-- Scalar learning exponent: complex −0.40 vs simple −0.30 (data more valuable on complex)
+Simple systems (EMIM-BF4) show no consistent gap (≈0, seed noise); complex systems (Pyr14-FSI) show a positive, decaying gap. The scalar learning-curve exponent is steeper for complex (−0.40) than simple (−0.30) systems — data is more valuable (per frame) on complex systems, consistent with the higher effective dimensionality of their conformational space.
 
 ### 3.6 PAC calibration (D2)
 - Empirical data-substitution rate (N^-1.49) is 3–4× the PAC bound (N^-0.5): PAC is a loose worst-case upper bound; actual substitutability is faster
