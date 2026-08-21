@@ -63,6 +63,7 @@
 - Batch 1 (30 frames): energy spread 12 eV, no outliers — good sampling
 - Batch 2: 1 outlier (large-displacement sampling — ion overlap) — filtered by >3×IQR
 - Merged 59-frame dataset; force RMSE = 1895 × N^−0.66 (7→59 frames: 467→122 meV/Å, l0)
+- v5 (59 frames): l2 = 79.1 meV/Å (equivariance +35% over l0 = 122.0) — equivariance advantage persists in bulk
 - **MD requirement (<10 meV/Å) ≈ 2743 frames at STO-3G level — bulk MD needs a large DFT budget or higher-level DFT**
 
 ## 4. Discussion
