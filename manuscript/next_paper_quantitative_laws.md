@@ -30,7 +30,8 @@
 - **Equivariance improves force magnitude primarily; direction error secondary, system-dependent**
 
 ### 3.4 Cation-modulated force gaps, quantified (B5)
-- Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å
+- Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å (strong cation ordering)
+- Energy gap shows no consistent anion ordering (−143 to +3 meV; weak) — dimension-specificity quantified
 - Seed robustness: 4/8 ILs sign-stable across 3 seeds; mean ranking robust
 
 ### 3.5 Simple vs complex (B7)
