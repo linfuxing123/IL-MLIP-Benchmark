@@ -33,6 +33,7 @@
 - Force error radial-dominated across all 8 ILs (59–99% radial; EMIM-BF4 98.8%, BMIM-PF6 74–59%)
 - Equivariance cuts radial (magnitude) error most (EMIM-BF4: −60%), tangential (direction) less
 - **Equivariance improves force magnitude primarily; direction error secondary, system-dependent**
+- **Bulk caveat (AA)**: in 2-ion-pair bulk, radial fraction drops to ~59% (l0/l2) — multi-body environments increase tangential (direction) error weight; radial dominance weakens with system size
 
 ### 3.4 Cation-modulated force gaps, quantified (B5)
 - Mean force gap: EMIM +1709 > BMIM +333 > Pyr14 −90 meV/Å (strong cation ordering)
