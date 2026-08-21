@@ -92,6 +92,7 @@
 - **Unified picture (AI)**: (i) energy learning requires force supervision — with forces, energy is accurate (v5); (ii) force-free ef training under e3nn 0.6 underfits energy (9594 meV; legacy e3nn 0.5 trained normally at 246 meV) — a training-behavior difference, not intrinsic unreliability; (iii) cross-sampling energy generalization is poor
 - **Energy RMSE scales with test energy span (AJ)**: 8-IL tests span 29–81 eV (RMSE 1179–7056 meV) vs v5 18 eV (67 meV) — large energy RMSE is largely test-extrapolation, not model failure; in-distribution energy is accurate; force generalization is robust regardless of span
 - **Normalized metric (AK)**: RMSE/span (‰) — 8-IL force models 34.6–189.6‰ vs v5 3.7‰ (10–50× better) — energy generalization depends on training-data coverage (59-frame bulk vs 30–45-frame single-pair); energy accuracy = f(force supervision, training coverage, test span)
+- **Bulk energy learning curve (AL)**: energy RMSE monotonically drops with frames (v1 7→v5 59: l0 502→74, l2 439→67 meV over 18-eV span) — data coverage drives energy generalization, mirroring the force curve
 - Data scales are consistent (0.0 eV mean difference) — cross-sampling evaluation is valid
 - Force findings (B2, B5, D1, C, AA, AB) are robust; energy findings (B1, B3, H, U) hold same-distribution under force supervision but require environment/distribution caveats
 - **Honest split: force-based findings (B2, B5, D1, C, AA, AB) are e3nn 0.6-reliable; energy-based findings (B1, B3, H, U) rest on legacy e3nn 0.5 data and require re-verification**
