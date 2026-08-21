@@ -28,9 +28,16 @@ Solving for the equivalent scalar-data volume, equivariant models at 32 channels
 Capacity itself substitutes equivariance: increasing capacity 4× (32 → 128 channels) replaces 61% of the equivariance need at N = 15 and 91% at N = 45 (gap 65.0 → 6.1 meV/atom). Capacity substitutes equivariance at least as efficiently as data (3× data → 76% replacement vs 4× capacity → 91%).
 
 ### 3.2c Capacity–data matching (Q)
-- 32-ch l2 beats 128-ch l2 at all N in Pyr14-FSI legacy (e3nn 0.5) data — but verification limited
 - **e3nn 0.6 environment: energy-only MACE training underfits at all capacities** (128-ch 9594 vs legacy 246 meV; 32-ch 10472), while force training (ef loss + forces_weight) is normal (91–133 meV/Å bulk; 8-IL models)
 - **Honest verdict: legacy energy learning curves (incl. companion paper) cannot be reproduced under e3nn 0.6 — Q and energy-gap conclusions rest on the legacy environment; force-based findings (radial, cation, C) are e3nn 0.6-reliable**
+
+### 3.2d Equivariance-substitution phase transition (unification of B1/B3/H)
+Testing simple unified forms (double power law gap = A·N^−b1·C^−b2; equivalent-resource R = N·C^g) against the Pyr14-FSI data shows both are inconsistent (double-power-law residual 18; β behavior conflicts). The data reveal a **capacity-dependent substitution phase transition**:
+- **C < C\* (capacity-scarce, 32 ch): β ≈ 0** — gap stays constant (~65 meV) as N grows: **data cannot substitute equivariance**
+- **C > C\* (capacity-ample, 128 ch): β ≈ 1.49** — gap decays ~N^−1.49: **data substitutes equivariance**
+- **Unified form: gap = A·N^(−β(C)), β(C) a threshold function of capacity — there is a critical capacity C\***; below it, extra data cannot replace equivariance; above it, data becomes an equivalent resource.
+- Physical picture: when model capacity < IL conformational complexity, added data cannot substitute equivariance (the bottleneck is capacity, not data). This unifies the power law (B1), data-efficiency (B3), and capacity-substitution (H) laws.
+- *Caveat (honest)*: only 2–3 N-points per capacity; the phase transition is indicative — mid capacities (64/96 ch) are needed to locate C\* and test whether the transition is sharp or smooth. Also note the simple-system (EMIM-BF4) gap is ~0 (equivariance redundant), so the transition applies to complex ILs (positive gap).
 
 ### 3.3 Radial-dominance law (B2)
 Decomposing force prediction error into radial (along the reference force) and tangential components across all 8 ILs, the error is radial-dominated (59–99%; EMIM-BF4 98.8%, BMIM-PF6 74–59%). Equivariance reduces radial (magnitude) error most (EMIM-BF4: −60%), leaving tangential (direction) error nearly unchanged — **equivariance improves force magnitude prediction, not direction** in relative terms. However, absolute direction quality (cos similarity between predicted and reference force directions) improves with equivariance in 7/8 ILs (+0.03 to +0.16; Pyr14-FSI +0.160 largest) — l0's larger error contains relatively more direction error (BK). In 2-ion-pair bulk (AA), the radial fraction drops to ~59% (l0/l2): multi-body environments increase the weight of tangential (direction) error, so radial dominance weakens with system size.
