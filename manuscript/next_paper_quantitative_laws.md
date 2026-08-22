@@ -157,6 +157,7 @@ Energy accuracy decomposes into three factors: (i) force supervision — with fo
 - unified_law_fig.png (equivalence-substitution phase transition: gap vs N across 32/64/128 ch; β_eff jump with critical capacity C*≈52.6)
 - unified_law_support.png (scalar vs equivariant learning curves; gap @ N=15 vs N=45 collapse revealing the transition)
 - unified_law_beta.png (β_eff sigmoid fit in capacity: β_max≈1.31, C*≈52.6 ch, σ_w≈5.0)
+- unified_law_mechanism.png (symmetry discount κ/s^m; C*=λκ/s^m prediction; unified small→large-scale spectrum)
 
 ## References
 See quantitative_laws_refs.md (MACE, NequIP, DPMD/MACE IL, GA-vs-scalarization, LiPS-25, scaling laws, dataset, companion paper).
