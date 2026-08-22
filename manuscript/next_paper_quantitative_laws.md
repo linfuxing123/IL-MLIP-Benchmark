@@ -78,6 +78,8 @@ The full unified law reads:
 | 64 ch | 268.5 | 202.3 | 66.2 | 17.9 | 1.19 |
 | 128 ch | 246.0 | 220.2 | 25.8 | 6.1 | 1.31 |
 
+The transition is visualized in Fig. unified_law_fig (gap vs N across capacities; β_eff jump) and Fig. unified_law_support (scalar vs equivariant learning curves; gap @ N=15 vs N=45 collapse). Fitting the three β_eff values to a steep sigmoid in capacity gives a **critical capacity C\* ≈ 48 channels** and a narrow width σ_w ≈ 0.13·C\* — i.e. equivariance substitutability switches on abruptly once capacity exceeds ~48 channels (within the 32–64 window), rather than gradually.
+
 ### 3.3 Radial-dominance law (B2)
 Decomposing force prediction error into radial (along the reference force) and tangential components across all 8 ILs, the error is radial-dominated (59–99%; EMIM-BF4 98.8%, BMIM-PF6 74–59%). Equivariance reduces radial (magnitude) error most (EMIM-BF4: −60%), leaving tangential (direction) error nearly unchanged — **equivariance improves force magnitude prediction, not direction** in relative terms. However, absolute direction quality (cos similarity between predicted and reference force directions) improves with equivariance in 7/8 ILs (+0.03 to +0.16; Pyr14-FSI +0.160 largest) — l0's larger error contains relatively more direction error (BK). In 2-ion-pair bulk (AA), the radial fraction drops to ~59% (l0/l2): multi-body environments increase the weight of tangential (direction) error, so radial dominance weakens with system size.
 
@@ -151,6 +153,7 @@ Energy accuracy decomposes into three factors: (i) force supervision — with fo
 - quantitative_laws_fig3.png (bulk energy learning curve, normalized energy metric)
 - gap_surface.png (substitutability surface: gap as function of N and capacity)
 - unified_law_fig.png (equivalence-substitution phase transition: gap vs N across 32/64/128 ch; β_eff jump with critical capacity C*≈48)
+- unified_law_support.png (scalar vs equivariant learning curves; gap @ N=15 vs N=45 collapse revealing the transition)
 
 ## References
 See quantitative_laws_refs.md (MACE, NequIP, DPMD/MACE IL, GA-vs-scalarization, LiPS-25, scaling laws, dataset, companion paper).
